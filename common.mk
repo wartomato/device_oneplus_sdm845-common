@@ -120,6 +120,10 @@ PRODUCT_PACKAGES += \
     Tag \
     com.android.nfc_extras
 
+# Offmode charging
+PRODUCT_PACKAGES += \
+    chargeonlymode
+    
 # Pocket mode
 PRODUCT_PACKAGES += \
     OnePlusPocketMode
