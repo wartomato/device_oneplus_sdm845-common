@@ -7,11 +7,16 @@
   {
     "repository": "AICP/kernel_oneplus_sdm845",
     "target_path": "kernel/oneplus/sdm845",
-    "branch": "o8.1"
+    "branch": "o8.1-flash"
   },
   {
     "repository": "LineageOS/android_packages_resources_devicesettings",
     "target_path": "packages/resources/devicesettings",
     "branch": "lineage-15.1"
+  },
+  {
+    "repository": "crdroidandroid/android_prebuilts_snapdragon-llvm_toolchains_llvm-Snapdragon-LLVM-for-Android-4.0",
+    "target_path": "prebuilts/snapdragon-llvm/toolchains/llvm-Snapdragon_LLVM_for_Android_4.0",
+    "branch": "8.1"
   }
 ]
