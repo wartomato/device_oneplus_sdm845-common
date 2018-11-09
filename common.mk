@@ -72,11 +72,23 @@ PRODUCT_PACKAGES += \
 
 # Doze mode
 PRODUCT_PACKAGES += \
-    OneplusDoze    
+    OneplusDoze
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/privapp-permissions-hotword.xml:system/etc/permissions/privapp-permissions-hotword.xml
+
+# Google extra permissions and features
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/com.google.android.dialer.support.xml:system/etc/permissions/com.google.android.dialer.support.xml \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/com.oneplus.software.xml:system/etc/permissions/com.oneplus.software.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_build.xml:system/etc/sysconfig/google_build.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_vr_build.xml:system/etc/sysconfig/google_google_vr_build.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/nexus.xml:system/etc/sysconfig/nexus.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_2018_exclusive.xml:system/etc/sysconfig/pixel_2018_exclusive.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_experience_2017.xml:system/etc/sysconfig/pixel_experience_2017.xml \
+    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_experience_2018.xml:system/etc/sysconfig/pixel_experience_2018.xml
 
 # Input
 PRODUCT_COPY_FILES += \
