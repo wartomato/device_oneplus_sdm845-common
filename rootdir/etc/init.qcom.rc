@@ -1,5 +1,6 @@
 import /init.kronic.rc
 on init
+    start jamesdsp
     mount none /system/etc/audio_effects.xml /vendor/etc/audio_effects.xml bind
     mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
     mount none /system/lib64/hw/power.qcom.so /vendor/lib64/hw/power.qcom.so bind
@@ -85,3 +86,8 @@ on property:sys.post_boot.parsed=1
 
 on property:vendor.post_boot.parsed=1
     exec u:r:magisk:s0 root root -- /init.kronic.sh
+
+service jamesdsp /system/bin/init.jamesdsp.sh
+    user root
+    oneshot
+    disabled

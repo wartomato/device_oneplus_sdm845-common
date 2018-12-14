@@ -67,7 +67,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    init.kronic.sh
+    init.kronic.sh \
+    init.jamesdsp.sh
 
 # Display
 PRODUCT_PACKAGES += \
