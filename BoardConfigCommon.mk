@@ -95,6 +95,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 # Display
+TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := (1 << 21)
 TARGET_USES_HWC2 := true
 
 # DRM
