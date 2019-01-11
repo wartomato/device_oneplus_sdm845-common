@@ -125,10 +125,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     chargeonlymode
     
-# Pocket mode
-PRODUCT_PACKAGES += \
-    OnePlusPocketMode
-
 # Power
 PRODUCT_PACKAGES += \
     power.qcom:64
