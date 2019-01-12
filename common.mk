@@ -83,7 +83,6 @@ PRODUCT_COPY_FILES += \
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
-    qti-telephony-common \
     android.hidl.base@1.0
 
 # Google extra permissions and features
