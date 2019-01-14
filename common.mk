@@ -66,7 +66,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    init.jamesdsp.sh
+    init.jamesdsp.sh \
+    init.performance.rc
 
 # Display
 PRODUCT_PACKAGES += \
