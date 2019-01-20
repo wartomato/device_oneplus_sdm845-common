@@ -35,6 +35,8 @@ TARGET_2ND_CPU_VARIANT := cortex-a75
 
 TARGET_USES_UEFI := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
