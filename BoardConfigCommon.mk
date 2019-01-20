@@ -130,7 +130,10 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := odm op1 op2
-BOARD_ROOT_EXTRA_SYMLINKS := /vendor/lib/dsp:/dsp /vendor/firmware:/firmware /vendor/bt_firmware:/bt_firmware /mnt/vendor/persist:/persist
+BOARD_ROOT_EXTRA_SYMLINKS += /vendor/lib/dsp:/dsp
+BOARD_ROOT_EXTRA_SYMLINKS += /vendor/firmware:/firmware
+BOARD_ROOT_EXTRA_SYMLINKS += /vendor/bt_firmware:/bt_firmware
+BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
 
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
