@@ -60,7 +60,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    SnapdragonCamera
 
 # Common init scripts
 PRODUCT_PACKAGES += \
