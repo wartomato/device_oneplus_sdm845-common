@@ -25,12 +25,13 @@
 # tri-state-key
 /system/bin/tri-state-key_daemon          u:object_r:tri-state-key_daemon_exec:s0
 
-# Wi-Fi
-/system/etc/WCNSS_qcom_cfg.ini    u:object_r:vendor_configs_file:s0
-
-# Custom Healthd
-/system/bin/hw/android.hardware.health@2.0-service.oneplus6 u:object_r:hal_health_omni_exec:s0
-/sys/devices/platform/soc/1d84000\.ufshc/host0/target0:0:0/0:0:0:0/block/sda/stat u:object_r:sysfs_batteryinfo:s0
+# Display Mode
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/SRGB           u:object_r:sysfs_dm:s0
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/hbm            u:object_r:sysfs_dm:s0
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/night_mode     u:object_r:sysfs_dm:s0
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/DCI_P3         u:object_r:sysfs_dm:s0
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/adaption_mode  u:object_r:sysfs_dm:s0
+/sys/devices/platform/soc/ae00000\.qcom\,mdss_mdp/drm/card0/card0-DSI-1/oneplus_mode   u:object_r:sysfs_dm:s0
 
 # JamesDSP shell script
 /system/bin/init.jamesdsp.sh   u:object_r:jamesdsp_exec:s0
