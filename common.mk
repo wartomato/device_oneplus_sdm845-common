@@ -59,19 +59,20 @@ PRODUCT_PACKAGES_DEBUG += \
     bootctl
 
 # Camera
-PRODUCT_PACKAGES_DEBUG += \
+PRODUCT_PACKAGES += \
     SnapdragonCamera
-#    CameraPackage
 
 # Common init scripts
 PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.recovery.qcom.rc \
-    init.jamesdsp.sh
+    init.jamesdsp.sh \
+    init.performance.rc
 
 # Display
 PRODUCT_PACKAGES += \
-    libvulkan
+    libvulkan \
+    DisplayMode
 
 # Doze mode
 PRODUCT_PACKAGES += \
@@ -90,6 +91,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilts/etc/permissions/com.google.android.dialer.support.xml:system/etc/permissions/com.google.android.dialer.support.xml \
     $(LOCAL_PATH)/prebuilts/etc/permissions/com.oneplus.software.xml:system/etc/permissions/com.oneplus.software.xml \
+    $(LOCAL_PATH)/prebuilts/etc/permissions/com.oneplus.software.overseas.xml:system/etc/permissions/com.oneplus.software.overseas.xml \
     $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_build.xml:system/etc/sysconfig/google_build.xml \
     $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_vr_build.xml:system/etc/sysconfig/google_google_vr_build.xml \
     $(LOCAL_PATH)/prebuilts/etc/sysconfig/nexus.xml:system/etc/sysconfig/nexus.xml \
@@ -117,13 +119,13 @@ PRODUCT_PACKAGES += \
 
 # NFC
 PRODUCT_PACKAGES += \
-    NfcNci \
+    android.hardware.nfc@1.0:64 \
+    android.hardware.nfc@1.1:64 \
+    android.hardware.secure_element@1.0:64 \
+    com.android.nfc_extras \
     Tag \
-    com.android.nfc_extras
-
-# Offmode charging
-PRODUCT_PACKAGES += \
-    chargeonlymode
+    vendor.nxp.nxpese@1.0:64 \
+    vendor.nxp.nxpnfc@1.0:64
 
 # Power
 PRODUCT_PACKAGES += \
@@ -131,6 +133,9 @@ PRODUCT_PACKAGES += \
 
 # Telephony
 PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
     telephony-ext
 
 PRODUCT_BOOT_JARS += \
@@ -156,16 +161,3 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
-
-#Wifi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/etc/WCNSS_qcom_cfg.ini:/vendor/etc/wifi/WCNSS_qcom_cfg.ini
-
-# WFD
-PRODUCT_BOOT_JARS += \
-    WfdCommon
-
-# Custom op6 healthd
-PRODUCT_PACKAGES += android.hardware.health@2.0-service.oneplus6
-DEVICE_FRAMEWORK_MANIFEST_FILE += \
-    system/libhidl/vintfdata/manifest_healthd_exclude.xml

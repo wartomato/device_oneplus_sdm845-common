@@ -2,13 +2,25 @@ on init
     start jamesdsp
     mount none /system/etc/audio_effects.xml /vendor/etc/audio_effects.xml bind
     mount none /system/etc/audio_policy_configuration.xml /vendor/etc/audio/audio_policy_configuration.xml bind
-    mount none /sbin/chargeonlymode /sbin/charger bind
     mount none /system/lib64/hw/power.qcom.so /vendor/lib64/hw/power.qcom.so bind
+    mount none /system/lib64/hw/hwcomposer.sdm845.so /vendor/lib64/hw/hwcomposer.sdm845.so bind
     mount none /system/lib/modules/wlan.ko /vendor/lib/modules-aging/qca_cld3_wlan.ko bind
     mount none /system/lib/modules/wlan.ko /vendor/lib/modules/qca_cld3_wlan.ko bind
     mount none /system/lib/soundfx/libjamesdsp.so /vendor/lib/soundfx/libjamesdsp.so bind
-    mount none /system/etc/WCNSS_qcom_cfg.ini /vendor/etc/wifi/WCNSS_qcom_cfg.ini bind
-    mount none /dev/null /vendor/etc/init/android.hardware.health@2.0-service.rc bind
+
+    write /dev/stune/schedtune.colocate 0
+    write /dev/stune/background/schedtune.colocate 0
+    write /dev/stune/system-background/schedtune.colocate 0
+    write /dev/stune/foreground/schedtune.colocate 0
+    write /dev/stune/top-app/schedtune.colocate 0
+    # Set default schedTune value for foreground/top-app a init
+    write /dev/stune/foreground/schedtune.prefer_idle 1
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
+
+on fs
+    write /dev/stune/foreground/schedtune.sched_boost_no_override 0
+    write /dev/stune/top-app/schedtune.sched_boost_no_override 0
 
 on boot
     # Fingerprint
@@ -50,10 +62,15 @@ on boot
     chmod 0660 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/display_mode
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm
+    write /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm 0
 
-    setprop vendor.camera.aux.packagelist com.oneplus.camera
-
-    mkdir /persist/battery 0770 system system
+on post-fs
+    # Vibration
+    chown system system /sys/class/leds/vibrator/vmax_override
+    write /sys/class/leds/vibrator/vmax_override 1
+    chown system system /sys/class/leds/vibrator/vmax_mv_user
+    chown system system /sys/class/leds/vibrator/vmax_mv_call
+    chown system system /sys/class/leds/vibrator/vmax_mv_strong
 
 on charger
     write /sys/class/backlight/panel0-backlight/brightness 150

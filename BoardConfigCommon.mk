@@ -22,7 +22,7 @@ TARGET_SPECIFIC_HEADER_PATH := $(COMMON_PATH)/include
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := cortex-a75
@@ -42,24 +42,26 @@ TARGET_USE_SDCLANG := true
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
 
-# Compile libhwui in performance mode
-HWUI_COMPILE_FOR_PERF := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Kernel
+TARGET_KERNEL_CONFIG := aicp_oneplus6_defconfig
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000
-BOARD_KERNEL_CMDLINE += msm_rtb.filter=0x237 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 service_locator.enable=1 swiotlb=2048 
-BOARD_KERNEL_CMDLINE += androidboot.configfs=true
-BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom androidboot.console=ttyMSM0 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 ehci-hcd.park=3 service_locator.enable=1 swiotlb=2048 androidboot.configfs=true androidboot.usbcontroller=a600000.dwc3 firmware_class.path=/vendor/firmware_mnt/image loop.max_part=7
 BOARD_KERNEL_CMDLINE += androidboot.wificountrycode=US
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 NEED_KERNEL_MODULE_SYSTEM := true
 TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/oneplus/sdm845
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+# Clang
+TARGET_KERNEL_CLANG_COMPILE := true
+TARGET_KERNEL_CLANG_VERSION := 9.0.2
+KBUILD_COMPILER_STRING := Android (5407736 based on r353983b) clang version 9.0.2
+export KBUILD_COMPILER_STRING
 
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
@@ -81,23 +83,22 @@ BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Camera
-TARGET_USES_QTI_CAMERA_DEVICE := true
-TARGET_USES_QTI_CAMERA2CLIENT := true
-TARGET_CAMERA_NEEDS_CLIENT_INFO := true
-USE_CAMERA_STUB := true
-TARGET_USES_MEDIA_EXTENSIONS := false
 TARGET_CAMERA_BOOTTIME_TIMESTAMP := true
 
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
-# Dex
+# Enable dexpreopt to speed boot time
 ifeq ($(HOST_OS),linux)
   ifneq ($(TARGET_BUILD_VARIANT),eng)
-    WITH_DEXPREOPT ?= true
+      WITH_DEXPREOPT := true
+      WITH_DEXPREOPT_DEBUG_INFO := false
+      USE_DEX2OAT_DEBUG := false
+      DONT_DEXPREOPT_PREBUILTS := true
+      WITH_DEXPREOPT_PIC := true
+      WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY := true
   endif
 endif
-WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Enable DRM plugins 64 bit compilation
 TARGET_ENABLE_MEDIADRM_64 := true
@@ -105,9 +106,8 @@ TARGET_ENABLE_MEDIADRM_64 := true
 # Display
 TARGET_USES_HWC2 := true
 
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
@@ -130,10 +130,11 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 
 # Root
 BOARD_ROOT_EXTRA_FOLDERS := odm op1 op2
-BOARD_ROOT_EXTRA_SYMLINKS += /vendor/lib/dsp:/dsp
-BOARD_ROOT_EXTRA_SYMLINKS += /vendor/firmware:/firmware
-BOARD_ROOT_EXTRA_SYMLINKS += /vendor/bt_firmware:/bt_firmware
-BOARD_ROOT_EXTRA_SYMLINKS += /mnt/vendor/persist:/persist
+BOARD_ROOT_EXTRA_SYMLINKS := \
+    /mnt/vendor/persist:/persist \
+    /vendor/bt_firmware:/bt_firmware \
+    /vendor/dsp:/dsp \
+    /vendor/firmware_mnt:/firmware
 
 # Telephony
 TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
@@ -143,9 +144,6 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(COMMON_PATH)/sepolicy/private
 
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += device/qcom/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += device/qcom/sepolicy/public
-
-# Verified Boot
-BOARD_BUILD_DISABLED_VBMETAIMAGE := true
 
 # Verified Boot
 BOARD_AVB_ENABLE := true

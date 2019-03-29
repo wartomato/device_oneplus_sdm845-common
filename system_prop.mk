@@ -14,6 +14,15 @@
 # limitations under the License.
 #
 
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.dex2oat-filter=speed \
+    dalvik.vm.image-dex2oat-filter=speed \
+    ro.vendor.qti.am.reschedule_service=true \
+    ro.sys.fw.dex2oat_thread_count=8 \
+    dalvik.vm.boot-dex2oat-threads=8 \
+    dalvik.vm.dex2oat-threads=8
+
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.min.duration.secs=30 \
@@ -28,11 +37,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.camera.preview.size=1920x1080 \
     vendor.camera.aux.packagelist=com.oneplus.camera
 
+# Debug IMS/VoLTE props
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.dbg.ims_volte_enable=1 \
+    persist.dbg.volte_avail_ovr=1 \
+    persist.dbg.vt_avail_ovr=1 \
+    persist.dbg.wfc_avail_ovr=1
+
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.gralloc.gfx_ubwc_disable=0 \
     debug.sf.latch_unsignaled=1 \
-    persist.vendor.color.matrix=2
+    persist.vendor.color.matrix=2 \
+    debug.hwui.use_buffer_age=false \
+    debug.sf.early_phase_offset_ns=5000000
+
+# CNE
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.cne.feature=1
+
+# DPM
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.vendor.dpm.feature=9
 
 # IOP
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -41,20 +67,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # OTG
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.oem.otg_support=true
+    ro.netflix.bsp_rev=Q845-14477-1
 
 # Media
 PRODUCT_PROPERTY_OVERRIDES += \
     media.settings.xml=/system/etc/media_profiles_vendor.xml
 
-#Netflix custom property
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.netflix.bsp_rev=Q845-14477-1
-
 # Perf
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.vendor.qti.core_ctl_max_cpu=4 \
-    ro.vendor.qti.core_ctl_min_cpu=2
+    sdm.debug.rotator_downscale=1
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -104,6 +125,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=ALL_ENABLE
 
-# CNE
+# Boot
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.vendor.cne.feature=1
+    sys.vendor.shutdown.waittime=500
