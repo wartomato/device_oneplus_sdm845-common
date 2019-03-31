@@ -71,12 +71,7 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libvulkan \
-    DisplayMode
-
-# Doze mode
-PRODUCT_PACKAGES += \
-    OneplusDoze
+    libvulkan
 
 # HotwordEnrollement app permissions
 PRODUCT_COPY_FILES += \
@@ -86,19 +81,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     ims-ext-common \
     android.hidl.base@1.0
-
-# Google extra permissions and features
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilts/etc/permissions/com.google.android.dialer.support.xml:system/etc/permissions/com.google.android.dialer.support.xml \
-    $(LOCAL_PATH)/prebuilts/etc/permissions/com.oneplus.software.xml:system/etc/permissions/com.oneplus.software.xml \
-    $(LOCAL_PATH)/prebuilts/etc/permissions/com.oneplus.software.overseas.xml:system/etc/permissions/com.oneplus.software.overseas.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_build.xml:system/etc/sysconfig/google_build.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/google_vr_build.xml:system/etc/sysconfig/google_google_vr_build.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/nexus.xml:system/etc/sysconfig/nexus.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_2017_exclusive.xml:system/etc/sysconfig/pixel_2017_exclusive.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_2018_exclusive.xml:system/etc/sysconfig/pixel_2018_exclusive.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_experience_2017.xml:system/etc/sysconfig/pixel_experience_2017.xml \
-    $(LOCAL_PATH)/prebuilts/etc/sysconfig/pixel_experience_2018.xml:system/etc/sysconfig/pixel_experience_2018.xml
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -143,7 +125,6 @@ PRODUCT_BOOT_JARS += \
 
 # tri-state-key
 PRODUCT_PACKAGES += \
-    KeyHandler \
     tri-state-key_daemon
 
 # Update engine
@@ -161,3 +142,6 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
+
+# Inherit from oneplus-common
+$(call inherit-product, device/oneplus/common/common.mk)
