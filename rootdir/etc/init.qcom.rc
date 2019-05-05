@@ -27,8 +27,8 @@ on boot
     chown system system /sys/devices/platform/soc/soc:goodix_fp/proximity_state
 
     # Portrait Mode
-    #write /data/misc/camera/client_package_name "com.oneplus.camera"
-    #chmod 0444 /data/misc/camera/client_package_name
+    write /data/misc/camera/client_package_name "com.oneplus.camera"
+    chmod 0444 /data/misc/camera/client_package_name
 
     # Touchpanel
     chmod 0660 /proc/touchpanel/double_swipe_enable
@@ -65,12 +65,12 @@ on boot
     write /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm 0
 
 on post-fs
-    # Vibration
-    #chown system system /sys/class/leds/vibrator/vmax_override
-    #write /sys/class/leds/vibrator/vmax_override 1
-    #chown system system /sys/class/leds/vibrator/vmax_mv_user
-    #chown system system /sys/class/leds/vibrator/vmax_mv_call
-    #chown system system /sys/class/leds/vibrator/vmax_mv_strong
+     Vibration
+    chown system system /sys/class/leds/vibrator/vmax_override
+    write /sys/class/leds/vibrator/vmax_override 1
+    chown system system /sys/class/leds/vibrator/vmax_mv_user
+    chown system system /sys/class/leds/vibrator/vmax_mv_call
+    chown system system /sys/class/leds/vibrator/vmax_mv_strong
 
 on charger
     write /sys/class/backlight/panel0-backlight/brightness 150
