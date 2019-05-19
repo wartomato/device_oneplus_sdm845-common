@@ -49,7 +49,8 @@ PRODUCT_PACKAGES += \
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio.a2dp.default
+    audio.a2dp.default \
+    libaacwrapper
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.xml:system/etc/audio_effects.xml \
@@ -72,7 +73,8 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    libvulkan
+    libvulkan \
+    vendor.display.config@1.0
 
 # IMS
 PRODUCT_PACKAGES += \
@@ -190,5 +192,9 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
 
-# Inherit from oneplus-common
-$(call inherit-product, device/oneplus/common/common.mk)
+# WiFi Display
+PRODUCT_PACKAGES += \
+    libnl
+
+PRODUCT_BOOT_JARS += \
+    WfdCommon
