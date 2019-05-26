@@ -22,6 +22,9 @@
     <!-- Label for feature switch [CHAR LIMIT=30] -->
     <string name="switch_bar_off">Off</string>
 
+    <!-- Device specific settings -->
+    <string name="device_settings_app_name">Advanced Settings</string>
+
     <string name="ambient_display_title">OnePlus Doze</string>
     <string name="ambient_display_summary">Wake screen when you receive notifications</string>
 
