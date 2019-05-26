@@ -19,8 +19,8 @@
   <string name="ambient_display_summary">Activar a pantalla ao recibir notificacións</string>
   <!-- Tilt sensor -->
   <string name="tilt_sensor_title">Sensor de inclinación</string>
-  <string name="pick_up_title">Coller</string>
-  <string name="pick_up_summary">Amosar notificacións ao coller o dispositivo</string>
+  <string name="pick_up_gesture_title">Coller</string>
+  <string name="pick_up_gesture_summary">Amosar notificacións ao coller o dispositivo</string>
   <!-- Proximity sensor -->
   <string name="proximity_sensor_title">Sensor de proximidade</string>
   <string name="hand_wave_gesture_title">Pasar a man</string>

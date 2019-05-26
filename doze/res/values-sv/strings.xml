@@ -16,8 +16,8 @@
   <!-- Label for feature switch [CHAR LIMIT=30] -->
   <!-- Label for feature switch [CHAR LIMIT=30] -->
   <!-- Tilt sensor -->
-  <string name="pick_up_title">Plocka upp</string>
-  <string name="pick_up_summary">Pulsera aviseringarna när enheten plockas upp</string>
+  <string name="pick_up_gesture_title">Plocka upp</string>
+  <string name="pick_up_gesture_summary">Pulsera aviseringarna när enheten plockas upp</string>
   <!-- Proximity sensor -->
   <string name="proximity_sensor_title">Närhetscensor</string>
   <string name="pocket_gesture_summary">Pulsera aviseringar när telefonen tas upp ur fickan</string>
