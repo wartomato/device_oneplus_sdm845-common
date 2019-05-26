@@ -387,9 +387,6 @@
    <!-- Enable all rotations -->
     <bool name="config_allowAllRotations">true</bool>
 
-    <!-- Set AOD off by default -->
-    <bool name="config_dozeAlwaysOnEnabled">false</bool>
-
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">true</bool>
 
@@ -410,11 +407,6 @@
         <item>2</item> <!-- COLOR_MODE_SATURATED -->
         <item>3</item> <!-- COLOR_MODE_AUTOMATIC -->
     </integer-array>
-
-    <!-- Default value for proximity check on screen wake
-     NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)-->
-    <bool name="config_proximityCheckOnWake">true</bool>
-    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
 
     <!-- Statusbar Burn in protection -->
     <bool name="config_statusBarBurnInProtection">true</bool>
