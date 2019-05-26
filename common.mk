@@ -17,6 +17,9 @@
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oneplus/sdm845-common/sdm845-common-vendor.mk)
 
+#We were launched with Oreo
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_o_mr1.mk)
+
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay
@@ -190,6 +193,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/lib/libsketchology_native.so:system/lib/libsketchology_native.so \
     $(LOCAL_PATH)/prebuilt/common/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
 
+# OEM Unlock reporting
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.oem_unlock_supported=1
+
 # Pocketmode
 PRODUCT_PACKAGES += \
     OneplusPocketMode
@@ -230,6 +237,10 @@ PRODUCT_STATIC_BOOT_CONTROL_HAL := \
 
 PRODUCT_PACKAGES_DEBUG += \
     update_engine_client
+
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.aicp.build.vendor_security_patch=2019-04-01
 
 # WiFi Display
 PRODUCT_PACKAGES += \

@@ -38,6 +38,9 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
