@@ -384,4 +384,15 @@
 
     <!-- Allow devices override audio panel location to the left side -->
     <bool name="config_audioPanelOnLeftSide">true</bool>
+
+   <!-- Array of paths to the libraries that contain device specific keyhandlers -->
+    <string-array name="config_deviceKeyHandlerLibs" translatable="false">
+        <item>/system/priv-app/DeviceHandler/DeviceHandler.apk</item>
+    </string-array>
+
+    <!-- Array of names of the keyhandler classes -->
+    <string-array name="config_deviceKeyHandlerClasses" translatable="false">
+        <item>com.slim.device.KeyHandler</item>
+    </string-array>
+
 </resources>

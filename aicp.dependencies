@@ -10,8 +10,8 @@
     "branch":      "p9.0"
   },
   {
-    "repository":  "wartomato/device_oneplus_common",
-    "target_path": "device/oneplus/common",
+    "repository":  "AICP/device_oppo_common",
+    "target_path": "device/oppo/common",
     "branch":      "p9.0"
   }
 ]
