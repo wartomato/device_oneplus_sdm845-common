@@ -8,11 +8,16 @@
             <instance>default</instance>
         </interface>
         <interface>
-            <name>IPictureAdjustment</name>
+            <name>ISunlightEnhancement</name>
             <instance>default</instance>
         </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.touch</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
         <interface>
-            <name>ISunlightEnhancement</name>
+            <name>ITouchscreenGesture</name>
             <instance>default</instance>
         </interface>
     </hal>

@@ -69,10 +69,6 @@ TARGET_KERNEL_CLANG_VERSION := 8.0.9
 KBUILD_COMPILER_STRING := Android clang 8.0.9 (based on r349610b)
 export KBUILD_COMPILER_STRING
 
-# Lineage Hardware
-BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/lineagehw
-JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(DEVICE_PATH)/lineagehw|**/*.java
-
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 

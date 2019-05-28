@@ -222,6 +222,10 @@ PRODUCT_BOOT_JARS += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+# Touchscreen Gestures
+PRODUCT_PACKAGES += \
+    lineage.touch@1.0-service.oneplus_sdm845
+
 # tri-state-key
 PRODUCT_PACKAGES += \
     tri-state-key_daemon
