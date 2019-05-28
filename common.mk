@@ -258,4 +258,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Inherit from oneplus-common
-$(call inherit-product, device/oppo/common/common.mk)
+$(call inherit-product, device/oneplus/common/common.mk)
