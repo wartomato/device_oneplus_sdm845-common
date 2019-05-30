@@ -64,19 +64,6 @@ on boot
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm
     write /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm 0
 
-    # Tri-State-Key
-    chown system system /sys/devices/virtual/switch/tri-state-key/state
-    chmod 0666 /sys/devices/virtual/switch/tri-state-key/state
-
-    chown system system /proc/tri-state-key/keyCode_top
-    chmod 0660 /proc/tri-state-key/keyCode_top
-
-    chown system system /proc/tri-state-key/keyCode_middle
-    chmod 0660 /proc/tri-state-key/keyCode_middle
-
-    chown system system /proc/tri-state-key/keyCode_bottom
-    chmod 0660 /proc/tri-state-key/keyCode_bottom
-
 on post-fs
      Vibration
     chown system system /sys/class/leds/vibrator/vmax_override
