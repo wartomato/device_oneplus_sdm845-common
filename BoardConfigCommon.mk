@@ -38,6 +38,9 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 # Use Snapdragon LLVM, if available
 TARGET_USE_SDCLANG := true
 
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm845
 TARGET_NO_BOOTLOADER := true
@@ -113,6 +116,10 @@ TARGET_USES_HWC2 := true
 
 # DRM
 TARGET_ENABLE_MEDIADRM_64 := true
+
+# Lineage Hardware
+BOARD_HARDWARE_CLASS += $(COMMON_PATH)/lineagehw
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(COMMON_PATH)/lineagehw|**/*.java
 
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
