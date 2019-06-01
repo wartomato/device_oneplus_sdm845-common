@@ -225,7 +225,7 @@ PRODUCT_PACKAGES_DEBUG += \
 
 # Vendor security patch level
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aicp.build.vendor_security_patch=2019-04-01
+    ro.aicp.build.vendor_security_patch=2019-05-01
 
 #Wifi
 PRODUCT_COPY_FILES += \
