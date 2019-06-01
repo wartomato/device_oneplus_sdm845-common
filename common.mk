@@ -78,10 +78,6 @@ PRODUCT_PACKAGES += \
     libvulkan \
     vendor.display.config@1.0
 
-# Doze
-PRODUCT_PACKAGES += \
-    Doze
-
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
@@ -189,10 +185,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/common/lib/libsketchology_native.so:system/lib/libsketchology_native.so \
     $(LOCAL_PATH)/prebuilt/common/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
-
-# Pocketmode
-PRODUCT_PACKAGES += \
-    OneplusPocketMode
 
 # Power
 PRODUCT_PACKAGES += \
