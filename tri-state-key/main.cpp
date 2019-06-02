@@ -24,12 +24,10 @@
 
 #include "uevent_listener.h"
 
-#define MODE_RING 605
-#define MODE_VIBRATE 604
-#define MODE_TOTAL_SILENCE 600
-#define MODE_ALARMS_ONLY 601
-#define MODE_PRIORITY_ONLY 602
-#define MODE_NONE 603
+// We support only 3 Keycodes.
+#define SLIDER_TOP 601
+#define SLIDER_MIDDLE 602
+#define SLIDER_BOTTOM 603
 
 
 using android::Uevent;
@@ -50,12 +48,9 @@ int main() {
     }
 
     err = ioctl(uinputFd, UI_SET_EVBIT, EV_KEY) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_RING) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_VIBRATE) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_TOTAL_SILENCE) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_ALARMS_ONLY) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_PRIORITY_ONLY) |
-          ioctl(uinputFd, UI_SET_KEYBIT, MODE_NONE);
+          ioctl(uinputFd, UI_SET_KEYBIT, SLIDER_BOTTOM) |
+          ioctl(uinputFd, UI_SET_KEYBIT, SLIDER_MIDDLE) |
+          ioctl(uinputFd, UI_SET_KEYBIT, SLIDER_TOP);
 
     if (err != 0) {
         LOG(ERROR) << "Unable to enable KEY events";
@@ -93,17 +88,11 @@ int main() {
 
         int keyCode;
         if (none && !vibration && !silent) {
-            keyCode = MODE_RING;
+            keyCode = SLIDER_BOTTOM;
         } else if (!none && vibration && !silent) {
-            keyCode = MODE_VIBRATE;
+            keyCode = SLIDER_MIDDLE;
         } else if (!none && !vibration && silent) {
-            keyCode = MODE_TOTAL_SILENCE;
-        } else if (!none && !vibration && silent) {
-            keyCode = MODE_NONE;
-        } else if (!none && !vibration && silent) {
-            keyCode = MODE_PRIORITY_ONLY;
-        } else if (!none && !vibration && silent) {
-            keyCode = MODE_ALARMS_ONLY;            
+            keyCode = SLIDER_TOP;
         } else {
             // Ignore intermediate states
             return;
@@ -113,26 +102,6 @@ int main() {
         event.type = EV_KEY;
         event.code = keyCode;
         event.value = 1;
-        err = write(uinputFd, &event, sizeof(event));
-        if (err < 0) {
-            LOG(ERROR) << "Write EV_KEY to uinput node failed";
-            return;
-        }
-
-        // Force a flush with an EV_SYN
-        event.type = EV_SYN;
-        event.code = SYN_REPORT;
-        event.value = 0;
-        err = write(uinputFd, &event, sizeof(event));
-        if (err < 0) {
-            LOG(ERROR) << "Write EV_SYN to uinput node failed";
-            return;
-        }
-
-        // Report the key
-        event.type = EV_KEY;
-        event.code = keyCode;
-        event.value = 0;
         err = write(uinputFd, &event, sizeof(event));
         if (err < 0) {
             LOG(ERROR) << "Write EV_KEY to uinput node failed";
