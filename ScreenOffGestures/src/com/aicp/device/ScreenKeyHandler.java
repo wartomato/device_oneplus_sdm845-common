@@ -55,9 +55,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.WindowManagerGlobal;
 
+import com.aicp.device.util.FileUtils;
 import com.android.internal.os.DeviceKeyHandler;
 import com.android.internal.util.ArrayUtils;
-import com.android.internal.util.aicp.FileUtils;
 import com.android.internal.util.gzosp.ActionConstants;
 import com.android.internal.util.gzosp.Action;
 
