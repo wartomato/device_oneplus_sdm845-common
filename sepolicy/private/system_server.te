@@ -1,2 +1,5 @@
 # Allow access to LiveDisplay tuning nodes
 #allow system_server sysfs_livedisplay_tuneable:file rw_file_perms;
+
+#Pocket Bridge
+allow system_server sysfs_inpocket:file { rw_file_perms };
