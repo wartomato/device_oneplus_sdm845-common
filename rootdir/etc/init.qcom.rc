@@ -26,10 +26,6 @@ on boot
     # Fingerprint
     chown system system /sys/devices/platform/soc/soc:goodix_fp/proximity_state
 
-    # Portrait Mode
-    write /data/misc/camera/client_package_name "com.oneplus.camera"
-    chmod 0444 /data/misc/camera/client_package_name
-
     # Touchpanel
     chmod 0660 /proc/touchpanel/double_swipe_enable
     chmod 0660 /proc/touchpanel/down_arrow_enable
@@ -63,6 +59,10 @@ on boot
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/display_mode
     chown system system /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm
     write /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/main_display/hbm 0
+
+    # Pocket judge sysfs permissions
+    chown system system /sys/kernel/pocket_judge/inpocket
+    chmod 0664 /sys/kernel/pocket_judge/inpocket
 
 on post-fs
     # Vibration

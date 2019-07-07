@@ -6,9 +6,6 @@
 /op2(/.*)?               u:object_r:op2_file:s0
 /persist(/.*)?           u:object_r:persist_file:s0
 
-# Files in sysfs
-/sys/devices/platform/soc/soc:goodix_fp/proximity_state    u:object_r:sysfs_fpc_proximity:s0
-
 # Audio
 /system/etc/audio_effects.xml    u:object_r:vendor_configs_file:s0
 /system/etc/audio_policy_configuration.xml    u:object_r:vendor_configs_file:s0
@@ -21,6 +18,9 @@
 
 # Power HAL
 /system/lib64/hw/power\.qcom\.so    u:object_r:vendor_file:s0
+
+# Pocket Bridge
+/sys/kernel/pocket_judge/inpocket                               u:object_r:sysfs_inpocket:s0
 
 # tri-state-key
 /system/bin/tri-state-key_daemon          u:object_r:tri-state-key_daemon_exec:s0
